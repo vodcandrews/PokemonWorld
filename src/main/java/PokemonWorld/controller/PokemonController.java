@@ -14,8 +14,8 @@ public class PokemonController {
 
 
     @GetMapping("/")
-    public List<Pokemon> getStarterPokemons(){
-        return pokemonService.savePokemons();
+    public String getStarterPokemons(){
+        return pokemonService.welcomeToPokemonWorld();
 
     }
 

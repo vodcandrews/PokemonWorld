@@ -13,38 +13,14 @@ public class PokemonService {
     @Autowired
     private PokemonRepository pokemonRepository;
 
-
-    private static List<Pokemon> pokemons = new ArrayList<Pokemon>();
-
-    static {
-        Pokemon pikacu = new Pokemon();
-        pikacu  .setId(5L);
-        pikacu.setName("Pikacu");
-        pikacu.setHeight(40.6);
-        pikacu.setWeakness("Ground");
-        pikacu.setType(PokemonType.ELECTRIC);
-        pikacu.setAbility("Static");
-        pokemons.add(pikacu);
-
-        Pokemon eevee = new Pokemon();
-        eevee.setId(5L);
-        eevee.setName("Eevee");
-        eevee.setHeight(30.5);
-        eevee.setWeakness("Fighting");
-        eevee.setType(PokemonType.NORMAL);
-        eevee.setAbility("Adaptability");
-        pokemons.add(eevee);
-    }
-
     public List<Pokemon> getPokemons(){
         List<Pokemon> pokemons = new ArrayList<>();
         pokemonRepository.findAll().forEach(pokemons::add);
         return pokemons;
     }
 
-    public List<Pokemon> savePokemons(){
-        pokemonRepository.saveAll(pokemons);
-        return pokemons;
+    public String welcomeToPokemonWorld(){
+        return "Welcome to the Pokemon World!";
     }
 
     public Pokemon getPokemonById(Long id){
