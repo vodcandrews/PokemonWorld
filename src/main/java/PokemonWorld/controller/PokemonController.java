@@ -3,10 +3,7 @@ package PokemonWorld.controller;
 import PokemonWorld.domain.Pokemon;
 import PokemonWorld.service.PokemonService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 @RestController
@@ -28,6 +25,10 @@ public class PokemonController {
 
     }
 
+    @DeleteMapping("/deletepokemon/{id}")
+    public void deletePokemon(@PathVariable Long id){
+        pokemonService.deletePokemon(id);
+    }
 
 
     @PostMapping("/addPokemon")
@@ -36,3 +37,4 @@ public class PokemonController {
     }
 
 }
+

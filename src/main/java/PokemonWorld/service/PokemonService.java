@@ -1,6 +1,7 @@
 package PokemonWorld.service;
 
 import PokemonWorld.domain.Pokemon;
+import PokemonWorld.domain.PokemonType;
 import PokemonWorld.repository.PokemonRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -18,14 +19,19 @@ public class PokemonService {
     static {
         Pokemon pikacu = new Pokemon();
         pikacu.setName("Pikacu");
-        pikacu.setId(1L);
+        pikacu.setHeight(40.6);
+        pikacu.setWeakness("Ground");
+        pikacu.setType(PokemonType.ELECTRIC);
+        pikacu.setAbility("Static");
         pokemons.add(pikacu);
 
         Pokemon eevee = new Pokemon();
-        eevee.setId(2L);
         eevee.setName("Eevee");
+        eevee.setHeight(30.5);
+        eevee.setWeakness("Fighting");
+        eevee.setType(PokemonType.NORMAL);
+        eevee.setAbility("Adaptability");
         pokemons.add(eevee);
-
     }
 
     public List<Pokemon> getPokemons(){
@@ -39,7 +45,16 @@ public class PokemonService {
         return pokemons;
     }
 
+    public Pokemon getPokemonById(Long id){
+        return pokemonRepository.getReferenceById(id);
+    }
+
     public void savePokemon(Pokemon pokemon) {
         pokemonRepository.save(pokemon);
+    }
+
+    public void deletePokemon(Long id) {
+        Pokemon pokemon = getPokemonById(id);
+        pokemonRepository.delete(pokemon);
     }
 }
