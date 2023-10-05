@@ -4,10 +4,7 @@ import PokemonWorld.domain.PokemonType;
 import PokemonWorld.repository.PokemonRepository;
 import PokemonWorld.service.PokemonService;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-import org.mockito.InjectMocks;
-import org.mockito.Mock;
-import org.mockito.MockitoAnnotations;
+
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,22 +12,23 @@ import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.*;
+
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
 
 @SpringBootTest
 public class PokemonServiceTest     {
 
-
-    @InjectMocks
+    @Autowired
     private PokemonService pokemonService;
 
-    @Mock
+    @MockBean
     private PokemonRepository pokemonRepository;
 
     @BeforeEach
     public void setUp() {
-        MockitoAnnotations.initMocks(this);
-
         // Mock the behavior of the PokemonRepository
         when(pokemonRepository.findAll()).thenReturn(getMockedPokemons());
         when(pokemonRepository.getReferenceById(1L)).thenReturn(getMockedPokemon(1L));

@@ -57,4 +57,18 @@ public class PokemonService {
         Pokemon pokemon = getPokemonById(id);
         pokemonRepository.delete(pokemon);
     }
+
+    public Pokemon updatePokemon(Long id, Pokemon updatedPokemon) {
+        Pokemon existingPokemon = pokemonRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Pokemon not found with id: " + id));
+
+        existingPokemon.setName(updatedPokemon.getName());
+        existingPokemon.setHeight(updatedPokemon.getHeight());
+        existingPokemon.setWeakness(updatedPokemon.getWeakness());
+        existingPokemon.setType(updatedPokemon.getType());
+        existingPokemon.setAbility(updatedPokemon.getAbility());
+
+        return pokemonRepository.save(existingPokemon);
+
+    }
 }

@@ -36,5 +36,10 @@ public class PokemonController {
         pokemonService.savePokemon(pokemon);
     }
 
+    @PutMapping("updatePokemon/{id}")
+    public Pokemon updatePokemon(@PathVariable Long id, @RequestBody Pokemon updatedPokemon){
+        return pokemonService.updatePokemon(id, updatedPokemon);
+    }
+
 }
 
