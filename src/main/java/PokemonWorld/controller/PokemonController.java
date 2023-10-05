@@ -12,11 +12,9 @@ public class PokemonController {
     @Autowired
     private PokemonService pokemonService;
 
-
     @GetMapping("/")
     public String getStarterPokemons(){
         return pokemonService.welcomeToPokemonWorld();
-
     }
 
     @GetMapping("/pokemons")
@@ -29,7 +27,6 @@ public class PokemonController {
     public void deletePokemon(@PathVariable Long id){
         pokemonService.deletePokemon(id);
     }
-
 
     @PostMapping("/addPokemon")
     public void addPokemon(@RequestBody Pokemon pokemon) {
