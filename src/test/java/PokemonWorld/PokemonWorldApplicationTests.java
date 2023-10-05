@@ -1,6 +1,7 @@
 package PokemonWorld;
 
-import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 import PokemonWorld.controller.PokemonController;
 import PokemonWorld.service.PokemonService;
@@ -18,7 +19,16 @@ class PokemonWorldApplicationTests {
 	private PokemonService service;
 
 	@Test
-	public void contextLoads() throws Exception {
-		assertThat(controller).isNotNull();
+	public void testGreeting() {
+		String greeting = service.welcomeToPokemonWorld();
+		assertEquals("Welcome to the Pokemon World!", greeting);
 	}
+	@Test
+	public void testGreetingAgain() {
+		String greeting = service.welcomeToPokemonWorld();
+		assertNotNull(greeting);
+	}
+
+
+
 }
