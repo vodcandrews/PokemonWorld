@@ -18,6 +18,7 @@ public class PokemonService {
 
     static {
         Pokemon pikacu = new Pokemon();
+        pikacu  .setId(5L);
         pikacu.setName("Pikacu");
         pikacu.setHeight(40.6);
         pikacu.setWeakness("Ground");
@@ -26,6 +27,7 @@ public class PokemonService {
         pokemons.add(pikacu);
 
         Pokemon eevee = new Pokemon();
+        eevee.setId(5L);
         eevee.setName("Eevee");
         eevee.setHeight(30.5);
         eevee.setWeakness("Fighting");

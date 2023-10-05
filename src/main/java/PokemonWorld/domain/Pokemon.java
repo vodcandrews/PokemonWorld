@@ -1,8 +1,5 @@
 package PokemonWorld.domain;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.GenericGenerator;
@@ -13,7 +10,7 @@ import org.hibernate.annotations.GenericGenerator;
 public class Pokemon {
 
     @Id
-    @GeneratedValue()
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String name;
@@ -24,6 +21,8 @@ public class Pokemon {
 
     private Double height;
 
+    @Enumerated(EnumType.STRING)
+    @Column(columnDefinition = "VARCHAR(255)")
     private PokemonType type;
 
     public Pokemon(Long id, String name, String weakness, String ability, Double height, PokemonType type) {
